@@ -1,12 +1,15 @@
 package com.batval.controller;
 
+import com.batval.dao.UserDAO;
 import com.batval.model.User;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -14,7 +17,10 @@ import java.util.List;
 @Controller
 public class MainController {
 
-    List<User> users = new ArrayList<>();
+    @Autowired
+    private UserDAO userDAO;
+
+    //List<User> users = new ArrayList<>();
 
     @GetMapping("/")
     public String view(@RequestParam(value = "name", required = false, defaultValue = "anonymous")
@@ -36,8 +42,8 @@ public class MainController {
     }
 
     @GetMapping("/users")
-    public String getUsers(Model model) {
-        model.addAttribute("users", users);
+    public String getUsers(Model model) throws SQLException {
+        model.addAttribute("users", userDAO.getAll());
         return "/users";
     }
 
@@ -62,7 +68,7 @@ public class MainController {
         if (result.hasErrors()) {
             return "/sign_up";
         }
-        users.add(user);
+    //    users.add(user);
         return "redirect:/users";
     }
 }

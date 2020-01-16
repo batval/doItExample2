@@ -10,10 +10,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
+
 
 @Controller
 public class MainController {
@@ -46,7 +43,7 @@ public class MainController {
     }
 
     @GetMapping("/users")
-    public String getUsers(Model model) throws SQLException {
+    public String getUsers(Model model)  {
         model.addAttribute("users", userDAO.getAll());
         return "/users";
     }
@@ -72,7 +69,7 @@ public class MainController {
         if (result.hasErrors()) {
             return "/sign_up";
         }
-    //    users.add(user);
+
         userDAO.addUser(user);
         return "redirect:/users";
     }

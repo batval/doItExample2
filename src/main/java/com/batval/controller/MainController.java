@@ -1,7 +1,7 @@
 package com.batval.controller;
 
-import com.batval.dao.UserDAO;
 import com.batval.model.User;
+import com.batval.service.UserService;
 import com.batval.util.UserValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,8 +15,9 @@ import javax.validation.Valid;
 @Controller
 public class MainController {
 
+
     @Autowired
-    private UserDAO userDAO;
+    private UserService userService;
 
     @Autowired
     private UserValidator userValidator;
@@ -44,7 +45,7 @@ public class MainController {
 
     @GetMapping("/users")
     public String getUsers(Model model)  {
-        model.addAttribute("users", userDAO.getAll());
+        model.addAttribute("users", userService.getAll());
         return "/users";
     }
 
@@ -70,7 +71,7 @@ public class MainController {
             return "/sign_up";
         }
 
-        userDAO.addUser(user);
+        userService.add(user);
         return "redirect:/users";
     }
 }

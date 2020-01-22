@@ -1,28 +1,44 @@
 package com.batval.model;
 
+
+import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
-
+@Entity
+@Table(name = "users")
 public class User {
 
-    @NotBlank(message = "Name is required")
-    private  String name;
 
-    @Size(min=1, max=20, message = "Surname should be from 1 to 10 symbols")
-    private  String surname;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @NotBlank(message = "Name is required")
+    private String name;
+
+    @Size(min = 1, max = 20, message = "Surname should be from 1 to 10 symbols")
+    private String surname;
 
     @Email
-    private  String email;
+    private String email;
 
     public User() {
     }
 
-   public User(String name, String surname, String email) {
+    public User(String name, String surname, String email) {
         this.name = name;
         this.surname = surname;
         this.email = email;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {

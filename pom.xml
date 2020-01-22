@@ -13,6 +13,7 @@
         <java-version>1.9</java-version>
         <freemarker-version>2.3.29</freemarker-version>
         <hibernate-version>5.4.10.Final</hibernate-version>
+        <aspectj-version>1.5.4</aspectj-version>
     </properties>
     <dependencies>
 
@@ -50,6 +51,26 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-orm</artifactId>
             <version>${spring-version}</version>
+        </dependency>
+
+<!--aspect oriented programming -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-aop</artifactId>
+            <version>${spring-version}</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/aspectj/aspectjrt -->
+        <dependency>
+            <groupId>aspectj</groupId>
+            <artifactId>aspectjrt</artifactId>
+            <version>${aspectj-version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
+            <version>${aspectj-version}</version>
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/org.springframework.data/spring-data-jpa -->

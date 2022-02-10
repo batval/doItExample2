@@ -12,7 +12,7 @@
         <spring-version>5.2.2.RELEASE</spring-version>
         <java-version>1.9</java-version>
         <freemarker-version>2.3.29</freemarker-version>
-        <hibernate-version>5.4.10.Final</hibernate-version>
+        <hibernate-version>5.4.24.Final</hibernate-version>
         <aspectj-version>1.5.4</aspectj-version>
     </properties>
     <dependencies>
